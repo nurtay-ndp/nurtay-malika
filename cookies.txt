@@ -1,0 +1,7 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+.tilda.ws	TRUE	/	FALSE	1999999999	__ddg1_	GvolpqPhNUHqMInx8gmX
+.tilda.ws	TRUE	/	FALSE	1999999999	__ddg8_	mp25WZrL19xdp4ch
+.tilda.ws	TRUE	/	FALSE	1999999999	__ddg10_	1748541074
+.tilda.ws	TRUE	/	FALSE	1999999999	__ddg9_	95.57.235.77
+

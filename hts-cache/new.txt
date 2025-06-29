@@ -1,0 +1,4 @@
+date	size'/'remotesize	flags(request:Update,Range state:File response:Modified,Chunked,gZipped)	statuscode	status ('servermsg')	MIME	Etag|Date	URL	localfile	(from URL)
+22:51:12	128989/128989	---M-Z	200	added ('OK')	text/html	etag:%221f7dd-6317767f97584-gzip%22	https://arunainvite.tilda.ws/askhatmeruyert	~/Sites/invitedesign2/arunainvite.tilda.ws/askhatmeruyert.html	(from )
+22:51:14	92/92	---M-Z	200	added ('OK')	text/plain	etag:%224d-6357e248ecbda-gzip%22	https://arunainvite.tilda.ws/robots.txt		(from )
+22:51:15	340/340	---M--	404	error ('Not%20Found')	text/html	etag:%22154-56d5bbe607fc0%22	https://arunainvite.tilda.ws/OPR/	~/Sites/invitedesign2/arunainvite.tilda.ws/OPR/index.html	(from https://arunainvite.tilda.ws/askhatmeruyert)
