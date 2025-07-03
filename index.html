@@ -3976,8 +3976,8 @@
   </script>
   <script>
     window.addEventListener('DOMContentLoaded', function() {
-      const scrollStep = 5; // px за шаг (медленнее)
-      const delay = 20; // мс между шагами (медленнее)
+      const scrollStep = 2; // px за шаг (еще медленнее)
+      const delay = 40; // мс между шагами (еще медленнее)
       let scrollTimeout = null;
       let stopped = false;
 
@@ -4008,7 +4008,7 @@
       document.addEventListener('wheel', stopScroll, { once: true });
       document.addEventListener('keydown', stopScroll, { once: true });
 
-      setTimeout(smoothScrollDown, 4000); // запуск через 2 секунды
+      setTimeout(smoothScrollDown, 4000); // запуск через 4 секунды
     });
   </script>
 </body>
