@@ -3704,50 +3704,17 @@
         <div class="t-container_100 ">
           <div class="t-width t-width_100 "> <!-- nominify begin -->
             <!-- Прописываем наши плееры и ссылки на аудио файлы.. --> <audio id="my_sound1">
-              <source
-                src="https://dl.dropboxusercontent.com/scl/fi/igv68or7om7gqcnjacx6b/mdee-toi-zyry-cover-mdos-mucasan_KAbRfrKw.mp3?rlkey=yba755dhiosj8sxg17daec5t4&st=acqzmwkn&dl=0">
+              <source src="https://dl.dropboxusercontent.com/scl/fi/igv68or7om7gqcnjacx6b/mdee-toi-zyry-cover-mdos-mucasan_KAbRfrKw.mp3?rlkey=yba755dhiosj8sxg17daec5t4&st=acqzmwkn&dl=0">
             </audio>
             <script>
-              $(document).ready(function () {
-                //Добавляем классы для наших кнопок управления
-                $("a[href^='#playsound']").addClass('playbtnbg');
-                var btnLink = 0;
-                var soundMax = 0;
-                $("a[href^='#stopsound']").addClass('stopbtnbg').hide();
-                //Создаём функцию смены кнопок 
-                function hideshowbtn() { $('.playbtnbg').show(); $('.stopbtnbg').hide(); };
-                //Прописываем события при клике на play
-                $("a[href^='#playsound']").click(function (e) {
-                  e.preventDefault(); hideshowbtn();
-                  btnLink = $(this).attr('href'); btnLink = btnLink.split('_')[1];
-                  soundMax = document.getElementById("my_sound" + btnLink); soundMax.play();
-                  $(this).hide(400); $("a[href='#stopsound_" + btnLink + "']").show(400);
-                });
-                //Прописываем события при клике на stop
-                $("a[href^='#stopsound']").click(function (e) {
-                  e.preventDefault(); hideshowbtn();
-                  btnLink = $(this).attr('href'); btnLink = btnLink.split('_')[1];
-                  soundMax = document.getElementById("my_sound" + btnLink); soundMax.pause();
-                  $(this).hide(400); $("a[href='#playsound_" + btnLink + "']").show(400);
-                });
-                //Функция прерывания трека
-                $(function () {
-                  $('audio').on('play', function () {
-                    $('audio').addClass('stoped').removeClass('playing');
-                    $(this).removeClass('stoped').addClass('playing');
-                    $('.stoped').each(function () {
-                      $(this)[0].currentTime = 0;
-                    })
-                  })
-                });
-                //Регулировка громкости     
-                $('#rec138215669').addClass('speaker');
-                $(".tn-atom_form").on('DOMSubtreeModified', ".t-range_value-txt", function () {
-                  var findVol = $(this).html(); $('audio').prop("volume", findVol / 100);
-                });
-                $("a[href^='#playsound']").click(function (e) { e.preventDefault(); $('.speaker').fadeIn(500); });
-                $("a[href^='#stopsound']").click(function (e) { e.preventDefault(); $('.speaker').fadeOut(500); });
-                $("audio").on("ended", function () { $('.playbtnbg').show(400); });
+              window.addEventListener('DOMContentLoaded', function() {
+                var audio = document.getElementById('my_sound1');
+                if (audio) {
+                  audio.play().catch(function(e) {
+                    // Если браузер заблокировал автозапуск, можно показать кнопку для запуска вручную
+                    console.log('Автовоспроизведение заблокировано браузером');
+                  });
+                }
               });
             </script>
             <style>
@@ -4008,7 +3975,7 @@
       document.addEventListener('wheel', stopScroll, { once: true });
       document.addEventListener('keydown', stopScroll, { once: true });
 
-      setTimeout(smoothScrollDown, 4000); // запуск через 4 секунды
+      setTimeout(smoothScrollDown, 3000); // запуск через 4 секунды
     });
   </script>
 </body>
