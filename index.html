@@ -3736,8 +3736,7 @@
                     $('audio').addClass('stoped').removeClass('playing');
                     $(this).removeClass('stoped').addClass('playing');
                     $('.stoped').each(function () {
-                      $(this).trigger('pause');
-                      //$(this)[0].currentTime = 0;
+                      $(this)[0].currentTime = 0;
                     })
                   })
                 });
@@ -3973,6 +3972,43 @@
         `;
         document.head.appendChild(slideOutStyle);
       }
+    });
+  </script>
+  <script>
+    window.addEventListener('DOMContentLoaded', function() {
+      const scrollStep = 5; // px за шаг (медленнее)
+      const delay = 20; // мс между шагами (медленнее)
+      let scrollTimeout = null;
+      let stopped = false;
+
+      function smoothScrollDown() {
+        const scrollHeight = document.body.scrollHeight;
+        let currentScroll = window.scrollY;
+
+        function step() {
+          if (stopped) return;
+          currentScroll += scrollStep;
+          if (currentScroll < scrollHeight) {
+            window.scrollTo(0, currentScroll);
+            scrollTimeout = setTimeout(step, delay);
+          } else {
+            window.scrollTo(0, scrollHeight);
+          }
+        }
+        step();
+      }
+
+      function stopScroll() {
+        stopped = true;
+        if (scrollTimeout) clearTimeout(scrollTimeout);
+      }
+
+      document.addEventListener('touchstart', stopScroll, { once: true });
+      document.addEventListener('mousedown', stopScroll, { once: true });
+      document.addEventListener('wheel', stopScroll, { once: true });
+      document.addEventListener('keydown', stopScroll, { once: true });
+
+      setTimeout(smoothScrollDown, 4000); // запуск через 2 секунды
     });
   </script>
 </body>
