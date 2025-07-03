@@ -3709,12 +3709,19 @@
             <script>
               window.addEventListener('DOMContentLoaded', function() {
                 var audio = document.getElementById('my_sound1');
-                if (audio) {
-                  audio.play().catch(function(e) {
-                    // Если браузер заблокировал автозапуск, можно показать кнопку для запуска вручную
-                    console.log('Автовоспроизведение заблокировано браузером');
-                  });
-                }
+                if (!audio) return;
+
+                // Пробуем автозапуск
+                audio.play().catch(function() {
+                  // Если не получилось — ждем первого касания или клика
+                  function tryPlay() {
+                    audio.play();
+                    document.removeEventListener('touchstart', tryPlay);
+                    document.removeEventListener('mousedown', tryPlay);
+                  }
+                  document.addEventListener('touchstart', tryPlay);
+                  document.addEventListener('mousedown', tryPlay);
+                });
               });
             </script>
             <style>
