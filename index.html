@@ -3979,6 +3979,17 @@
       function stopScroll() {
         stopped = true;
         if (scrollTimeout) clearTimeout(scrollTimeout);
+        
+        // Запускаем музыку когда автопрокрутка останавливается
+        var audio = document.getElementById('my_sound1');
+        if (audio) {
+          audio.muted = false;
+          audio.play().then(function() {
+            console.log('Музыка запущена после остановки автопрокрутки!');
+          }).catch(function(error) {
+            console.log('Ошибка запуска музыки:', error);
+          });
+        }
       }
 
       document.addEventListener('touchstart', stopScroll, { once: true });
@@ -3986,7 +3997,7 @@
       document.addEventListener('wheel', stopScroll, { once: true });
       document.addEventListener('keydown', stopScroll, { once: true });
 
-      setTimeout(smoothScrollDown, 3000); // запуск через 4 секунды
+      setTimeout(smoothScrollDown, 1000); // запуск через 4 секунды
     });
   </script>
 </body>
