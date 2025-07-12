@@ -3703,41 +3703,43 @@
         <div class="t-container_100 ">
           <div class="t-width t-width_100 "> <!-- nominify begin -->
             <!-- Прописываем наши плееры и ссылки на аудио файлы.. --> <audio id="my_sound1" preload="auto" muted>
-              <source src="IL'HAN - Val's.mp3">
-            </audio>
-            <script>
-              window.addEventListener('DOMContentLoaded', function() {
-                var audio = document.getElementById('my_sound1');
-                if (!audio) return;
+  <source src="IL'HAN - Val's.mp3">
+</audio>
 
-                // Функция для запуска музыки
-                function startMusic() {
-                  audio.muted = false; // Убираем mute
-                  audio.play().catch(function(error) {
-                    console.log('Не удалось запустить музыку:', error);
-                  });
-                }
 
-                // Пробуем автозапуск
-                startMusic();
 
-                // Если автозапуск не сработал, пробуем при первом взаимодействии
-                function tryPlayOnInteraction() {
-                  startMusic();
-                  // Удаляем обработчики после успешного запуска
-                  document.removeEventListener('touchstart', tryPlayOnInteraction);
-                  document.removeEventListener('mousedown', tryPlayOnInteraction);
-                  document.removeEventListener('scroll', tryPlayOnInteraction);
-                  document.removeEventListener('click', tryPlayOnInteraction);
-                }
+<script>
+  window.addEventListener('DOMContentLoaded', function() {
+    var audio = document.getElementById('my_sound1');
+    if (!audio) return;
 
-                // Добавляем обработчики для разных событий
-                document.addEventListener('touchstart', tryPlayOnInteraction);
-                document.addEventListener('mousedown', tryPlayOnInteraction);
-                document.addEventListener('scroll', tryPlayOnInteraction);
-                document.addEventListener('click', tryPlayOnInteraction);
-              });
-            </script> <!-- nominify end -->
+    // Функция для запуска музыки
+    function startMusic() {
+      audio.muted = false;
+      audio.play().then(function() {
+        console.log('Музыка запущена!');
+      }).catch(function(error) {
+        console.log('Ошибка запуска музыки:', error);
+      });
+    }
+
+    // Запуск музыки только при взаимодействии пользователя
+    function tryPlayOnInteraction() {
+      startMusic();
+      // Удаляем обработчики после успешного запуска
+      document.removeEventListener('touchstart', tryPlayOnInteraction);
+      document.removeEventListener('mousedown', tryPlayOnInteraction);
+      document.removeEventListener('scroll', tryPlayOnInteraction);
+      document.removeEventListener('click', tryPlayOnInteraction);
+    }
+
+    // Добавляем обработчики для разных событий
+    document.addEventListener('touchstart', tryPlayOnInteraction);
+    document.addEventListener('mousedown', tryPlayOnInteraction);
+    document.addEventListener('scroll', tryPlayOnInteraction);
+    document.addEventListener('click', tryPlayOnInteraction);
+  });
+</script> <!-- nominify end -->
           </div>
         </div>
       </div>
