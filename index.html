@@ -3099,8 +3099,7 @@
             data-field-heightunits-value="px" data-field-widthunits-value="px" data-field-textfit-value="autoheight"
             data-field-top-res-320-value="1300" data-field-left-res-320-value="0" data-field-height-res-320-value="81"
             data-field-textfit-res-320-value="fixedsize" style="margin-bottom: 30px;">
-            <div class='tn-atom ' field='tn_text_1741598818638' style="margin-bottom: 30px;">Үйлену тойына арналған салтанатты ақ дастарханымыздың
-              қадірлі қонағы болуға шақырамыз!<br><br>Той иелері:<br><span style="font-size: 28px;">Нұрхат &amp; Гүлмира</span></div>
+            <div class='tn-atom ' field='tn_text_1741598818638' style="margin-bottom: 30px;">Шанырақ көтеру салтанатына арналған дастарханымыздың қадірлі қонағы болуға шақырамыз!<br><br>Той иелері:<br><span style="font-size: 28px;">Нұрхат &amp; Гүлмира</span></div>
           </div>
           <div class='t396__elem tn-elem tn-elem__8882294951741607780564 t-animate' data-elem-id='1741607780564'
             data-elem-type='text' data-field-top-value="90" data-field-left-value="90" data-field-height-value="62"
@@ -3139,7 +3138,7 @@
             data-field-heightunits-value="px" data-field-widthunits-value="px" data-field-textfit-value="autoheight"
             data-field-top-res-320-value="1161" data-field-left-res-320-value="-1" data-field-height-res-320-value="108"
             data-field-textfit-res-320-value="fixedsize">
-            <div class='tn-atom pacifico-regular' style="font-size: 32px;" field='tn_text_1741598556955'><i>Нұртай мен Маликаның</i></div>
+            <div class='tn-atom pacifico-regular' style="font-size: 32px;" field='tn_text_1741598556955'>Нұртай<br> <span style="font-size: 24px; font-family: Georgia, 'Times New Roman', Times, serif;">мен келініміз</span> <br>Маликаның</div>
           </div>
           <div class='t396__elem tn-elem tn-elem__8882294951741598485297' data-elem-id='1741598485297'
             data-elem-type='text' data-field-top-value="40" data-field-left-value="40" data-field-height-value="31"
@@ -3148,7 +3147,7 @@
             data-field-heightunits-value="px" data-field-widthunits-value="px" data-field-textfit-value="autoheight"
             data-field-top-res-320-value="1108" data-field-left-res-320-value="-120"
             data-field-height-res-320-value="31" data-field-textfit-res-320-value="fixedsize">
-            <div class='tn-atom ' field='tn_text_1741598485297'>Құрметті қонақтар!<br>Сіздерді балаларымыз</div>
+            <div class='tn-atom ' field='tn_text_1741598485297'>Құрметті қонақтар!<br>Сіздерді ұлымыз</div>
           </div>
           <div class='t396__elem tn-elem tn-elem__8882294951741597332157' data-elem-id='1741597332157'
             data-elem-type='text' data-field-top-value="30" data-field-left-value="30" data-field-height-value="62"
@@ -3703,7 +3702,7 @@
       <div class="t123">
         <div class="t-container_100 ">
           <div class="t-width t-width_100 "> <!-- nominify begin -->
-            <!-- Прописываем наши плееры и ссылки на аудио файлы.. --> <audio id="my_sound1">
+            <!-- Прописываем наши плееры и ссылки на аудио файлы.. --> <audio id="my_sound1" preload="auto" muted>
               <source src="IL'HAN - Val's.mp3">
             </audio>
             <script>
@@ -3711,31 +3710,34 @@
                 var audio = document.getElementById('my_sound1');
                 if (!audio) return;
 
-                // Пробуем автозапуск
-                audio.play().catch(function() {
-                  // Если не получилось — ждем первого касания или клика
-                  function tryPlay() {
-                    audio.play();
-                    document.removeEventListener('touchstart', tryPlay);
-                    document.removeEventListener('mousedown', tryPlay);
-                  }
-                  document.addEventListener('touchstart', tryPlay);
-                  document.addEventListener('mousedown', tryPlay);
-                });
-              });
-            </script>
-            <style>
-              .t-range__interval-txt {
-                display: none !important;
-              }
+                // Функция для запуска музыки
+                function startMusic() {
+                  audio.muted = false; // Убираем mute
+                  audio.play().catch(function(error) {
+                    console.log('Не удалось запустить музыку:', error);
+                  });
+                }
 
-              .speaker {
-                display: none;
-                position: fixed;
-                bottom: 0;
-                z-index: 999;
-              }
-            </style> <!-- nominify end -->
+                // Пробуем автозапуск
+                startMusic();
+
+                // Если автозапуск не сработал, пробуем при первом взаимодействии
+                function tryPlayOnInteraction() {
+                  startMusic();
+                  // Удаляем обработчики после успешного запуска
+                  document.removeEventListener('touchstart', tryPlayOnInteraction);
+                  document.removeEventListener('mousedown', tryPlayOnInteraction);
+                  document.removeEventListener('scroll', tryPlayOnInteraction);
+                  document.removeEventListener('click', tryPlayOnInteraction);
+                }
+
+                // Добавляем обработчики для разных событий
+                document.addEventListener('touchstart', tryPlayOnInteraction);
+                document.addEventListener('mousedown', tryPlayOnInteraction);
+                document.addEventListener('scroll', tryPlayOnInteraction);
+                document.addEventListener('click', tryPlayOnInteraction);
+              });
+            </script> <!-- nominify end -->
           </div>
         </div>
       </div>
