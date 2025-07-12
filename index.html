@@ -37,7 +37,7 @@
   <script
     type="text/javascript">function t_onReady(func) { if (document.readyState != 'loading') { func(); } else { document.addEventListener('DOMContentLoaded', func); } }
       function t_onFuncLoad(funcName, okFunc, time) { if (typeof window[funcName] === 'function') { okFunc(); } else { setTimeout(function () { t_onFuncLoad(funcName, okFunc, time); }, (time || 100)); } } window.tildaApiServiceRootDomain = "tildaapi.pro"; function t396_initialScale(t) { t = document.getElementById("rec" + t); if (t) { t = t.querySelector(".t396__artboard"); if (t) { var e, r = document.documentElement.clientWidth, a = []; if (i = t.getAttribute("data-artboard-screens")) for (var i = i.split(","), l = 0; l < i.length; l++)a[l] = parseInt(i[l], 10); else a = [320, 480, 640, 960, 1200]; for (l = 0; l < a.length; l++) { var n = a[l]; n <= r && (e = n) } var o = "edit" === window.allrecords.getAttribute("data-tilda-mode"), d = "center" === t396_getFieldValue(t, "valign", e, a), c = "grid" === t396_getFieldValue(t, "upscale", e, a), s = t396_getFieldValue(t, "height_vh", e, a), u = t396_getFieldValue(t, "height", e, a), g = !!window.opr && !!window.opr.addons || !!window.opera || -1 !== navigator.userAgent.indexOf("OPR/index.html"); if (!o && d && !c && !s && u && !g) { for (var _ = parseFloat((r / e).toFixed(3)), f = [t, t.querySelector(".t396__carrier"), t.querySelector(".t396__filter")], l = 0; l < f.length; l++)f[l].style.height = Math.floor(parseInt(u, 10) * _) + "px"; t396_scaleInitial__getElementsToScale(t).forEach(function (t) { t.style.zoom = _ }) } } } } function t396_scaleInitial__getElementsToScale(t) { return t ? Array.prototype.slice.call(t.children).filter(function (t) { return t && (t.classList.contains("t396__elem") || t.classList.contains("t396__group")) }) : [] } function t396_getFieldValue(t, e, r, a) { var i = a[a.length - 1], l = r === i ? t.getAttribute("data-artboard-" + e) : t.getAttribute("data-artboard-" + e + "-res-" + r); if (!l) for (var n = 0; n < a.length; n++) { var o = a[n]; if (!(o <= r) && (l = o === i ? t.getAttribute("data-artboard-" + e) : t.getAttribute("data-artboard-" + e + "-res-" + o))) break } return l }</script>
-  <script src="https://static.tildacdn.pro/js/jquery-1.10.2.min.js" charset="utf-8"
+    <script src="https://static.tildacdn.pro/js/jquery-1.10.2.min.js" charset="utf-8"
     onerror="this.loaderr='y';"></script>
   <script src="https://static.tildacdn.pro/js/tilda-scripts-3.0.min.js" charset="utf-8" defer
     onerror="this.loaderr='y';"></script>
@@ -84,8 +84,38 @@
       font-size: 32px !important;
       line-height: 1.5 !important;
     }
-    .t-tildalabel {
+    .t-tildalabel,
+    .t-tildalabel-free,
+    .t-tildalabel-free *,
+    .t-tildalabel__wrapper,
+    .t-tildalabel__txtleft,
+    .t-tildalabel__wrapimg,
+    .t-tildalabel__txtright {
       display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      height: 0 !important;
+      width: 0 !important;
+      pointer-events: none !important;
+    }
+    /* Скрыть все фиксированные и абсолютные черные баннеры Tilda */
+    body > div[style*="fixed"][style*="z-index"],
+    body > div[style*="position: fixed"],
+    body > div[style*="position: absolute"],
+    body > div[style*="tildacntr"],
+    body > div[style*="tildabanner"],
+    body > div[style*="tildabn"],
+    body > div[style*="tildalabel"],
+    body > div[style*="tildacopy"],
+    body > div[style*="tildacntr"] *,
+    body > div[style*='background: rgb(0, 0, 0)'],
+    body > div[style*='background-color: rgb(0, 0, 0)'] {
+      display: none !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+      height: 0 !important;
+      width: 0 !important;
+      visibility: hidden !important;
     }
   </style>
   <script>
@@ -129,7 +159,7 @@
 
 <body class="t-body" style="margin:0;"> <!--allrecords-->
   <div id="allrecords" class="t-records" data-hook="blocks-collection-content-node" data-tilda-project-id="12417815"
-    data-tilda-page-id="64670819" data-tilda-page-alias="askhatmeruyert"
+    data-tilda-page-id="64670819" data-tilda-page-alias="nurtayandmalika"
     data-tilda-formskey="41b9e6427c9b2d3b4f63fae512417815" data-tilda-cookie="no" data-tilda-lazy="yes"
     data-tilda-root-zone="pro" data-tilda-project-headcode="yes">
     <div id="rec888229495" class="r t-rec" style=" " data-animationappear="off" data-record-type="396"> <!-- T396 -->
@@ -3806,18 +3836,8 @@
       </div>
     </div>
   </div> <!--/allrecords--> <!-- Tilda copyright. Don't remove this line -->
-  <div class="t-tildalabel " id="tildacopy" data-tilda-sign="12417815#64670819"><a href="https://tilda.cc/"
-      class="t-tildalabel__link">
-      <div class="t-tildalabel__wrapper">
-        <div class="t-tildalabel__txtleft">Made on </div>
-        <div class="t-tildalabel__wrapimg"><img src="https://static.tildacdn.pro/img/tildacopy.png"
-            class="t-tildalabel__img" fetchpriority="low" alt=""></div>
-        <div class="t-tildalabel__txtright">Tilda</div>
-      </div>
-    </a></div> <!-- Stat -->
-  <script
-    type="text/javascript">if (!window.mainTracker) { window.mainTracker = 'tilda'; }
-      window.tildastatcookie = 'no'; setTimeout(function () { (function (d, w, k, o, g) { var n = d.getElementsByTagName(o)[0], s = d.createElement(o), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.key = k; s.id = "tildastatscript"; s.src = g; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, '2ed279e6a9bb97aba364b2eae19357e9', 'script', 'https://static.tildacdn.pro/js/tilda-stat-1.0.min.js'); }, 2000);</script>
+  
+
   
   <!-- Web3Forms обработка -->
   <script>
